@@ -1,0 +1,6 @@
+name: cloud-portal
+title: cloud-portal
+version: master
+start_page: ROOT:index.adoc
+nav:
+  - modules/ROOT/partials/nav.adoc

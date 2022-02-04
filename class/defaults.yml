@@ -1,0 +1,4 @@
+parameters:
+  cloud_portal:
+    =_metadata: {}
+    namespace: syn-cloud-portal
