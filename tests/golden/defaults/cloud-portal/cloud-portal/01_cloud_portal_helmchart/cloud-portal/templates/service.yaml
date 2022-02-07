@@ -5,8 +5,8 @@ metadata:
     app.kubernetes.io/instance: cloud-portal
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: cloud-portal
-    app.kubernetes.io/version: v0.0.2
-    helm.sh/chart: cloud-portal-0.2.1
+    app.kubernetes.io/version: v0.1.0
+    helm.sh/chart: cloud-portal-0.3.0
   name: cloud-portal
 spec:
   ports:
