@@ -7,6 +7,6 @@ parameters:
     chart:
       source: https://charts.appuio.ch
       name: cloud-portal
-      version: "0.2.1"
+      version: "0.3.0"
 
     helm_values: {}
