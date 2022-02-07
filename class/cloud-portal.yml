@@ -1,5 +1,12 @@
 parameters:
   kapitan:
+    dependencies:
+      - type: helm
+        chart_name: ${cloud_portal:chart:name}
+        version: ${cloud_portal:chart:version}
+        source: ${cloud_portal:chart:source}
+        output_path: dependencies/cloud-portal/helmcharts/cloud-portal/${cloud_portal:chart:name}/${cloud_portal:chart:version}/
+
     compile:
       - input_paths:
           - cloud-portal/component/app.jsonnet
@@ -9,3 +16,13 @@ parameters:
           - cloud-portal/component/main.jsonnet
         input_type: jsonnet
         output_path: cloud-portal/
+
+      - output_path: ${_instance}/01_cloud_portal_helmchart
+        input_type: helm
+        output_type: yaml
+        input_paths:
+          - cloud-portal/helmcharts/cloud-portal/${cloud_portal:chart:name}/${cloud_portal:chart:version}/
+        helm_params:
+          name: ${cloud_portal:release_name}
+          namespace: ${cloud_portal:namespace}
+        helm_values: ${cloud_portal:helm_values}

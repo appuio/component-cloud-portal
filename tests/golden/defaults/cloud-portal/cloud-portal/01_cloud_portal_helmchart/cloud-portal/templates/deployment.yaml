@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/instance: cloud-portal
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: cloud-portal
+    app.kubernetes.io/version: v0.0.2
+    helm.sh/chart: cloud-portal-0.2.1
+  name: cloud-portal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: cloud-portal
+      app.kubernetes.io/name: cloud-portal
+  template:
+    metadata:
+      annotations:
+        configmap.kubernetes.io/checksum: 3063bc36746570e03b60cca0bebf731f2f8f02e846b5f5fc0a59a688744d387d
+      labels:
+        app.kubernetes.io/instance: cloud-portal
+        app.kubernetes.io/name: cloud-portal
+    spec:
+      containers:
+        - image: ghcr.io/appuio/cloud-portal:v0.0.2
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          name: cloud-portal
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            limits:
+              memory: 128Mi
+            requests:
+              cpu: 20m
+              memory: 32Mi
+          securityContext: {}
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html/config.json
+              name: config
+              subPath: config.json
+      securityContext: {}
+      serviceAccountName: cloud-portal
+      volumes:
+        - configMap:
+            items:
+              - key: config.json
+                path: config.json
+            name: cloud-portal-frontend
+          name: config

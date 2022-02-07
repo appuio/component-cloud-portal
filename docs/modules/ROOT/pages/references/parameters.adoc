@@ -6,14 +6,69 @@ The parent key for all of the following parameters is `cloud_portal`.
 
 [horizontal]
 type:: string
-default:: `syn-cloud-portal`
+default:: `appuio-cloud-portal`
 
 The namespace in which to deploy this component.
+
+
+== `release_name`
+
+[horizontal]
+type:: string
+default:: `cloud-portal`
+
+The name under which the helm chart is deployed.
+
+
+== `chart.source`
+
+[horizontal]
+type:: string
+default:: `https://charts.appuio.ch`
+
+The Helm repository for the downloaded chart.
+
+
+== `chart.name`
+
+[horizontal]
+type:: string
+default:: `cloud-portal`
+
+The name of the downloaded Helm chart.
+
+
+== `chart.version`
+
+[horizontal]
+type:: string
+example:: `0.2.1`
+
+The version of the downloaded Helm chart.
+
+
+== `helm_values`
+
+[horizontal]
+type:: object
+
+Allows setting additional values for the Cloud Portal Helm chart.
 
 
 == Example
 
 [source,yaml]
 ----
-namespace: example-namespace
+cloud_portal:
+  helm_values:
+    replicaCount: 2
+    route:
+      enabled: true
+      host: portal.appuio.example
+    portal:
+      config:
+        issuer: https://portal.appuio.example/auth/realms/appuio-cloud
+        clientId: appuio-control-api
+      env:
+        APPUIO_API: https://portal.appuio.example/
 ----
