@@ -20,31 +20,22 @@ default:: `cloud-portal`
 The name under which the helm chart is deployed.
 
 
-== `chart.source`
+== `charts.cloud-portal.source`
 
 [horizontal]
 type:: string
 default:: `https://charts.appuio.ch`
 
-The Helm repository for the downloaded chart.
+The Helm repository for the `cloud-portal` Helm chart.
 
 
-== `chart.name`
-
-[horizontal]
-type:: string
-default:: `cloud-portal`
-
-The name of the downloaded Helm chart.
-
-
-== `chart.version`
+== `charts.cloud-portal.version`
 
 [horizontal]
 type:: string
-example:: `0.2.1`
+example:: https://github.com/appuio/component-cloud-portal/blob/master/class/defaults.yml[See `class/defaults.yml`]
 
-The version of the downloaded Helm chart.
+The version to use for the `cloud-portal` Helm chart.
 
 
 == `helm_values`
