@@ -2,10 +2,10 @@ parameters:
   kapitan:
     dependencies:
       - type: helm
-        chart_name: ${cloud_portal:chart:name}
-        version: ${cloud_portal:chart:version}
-        source: ${cloud_portal:chart:source}
-        output_path: dependencies/cloud-portal/helmcharts/cloud-portal/${cloud_portal:chart:name}/${cloud_portal:chart:version}/
+        chart_name: cloud-portal
+        version: ${cloud_portal:charts:cloud-portal:version}
+        source: ${cloud_portal:charts:cloud-portal:source}
+        output_path: dependencies/cloud-portal/helmcharts/cloud-portal/${cloud_portal:charts:cloud-portal:version}/
 
     compile:
       - input_paths:
@@ -21,7 +21,7 @@ parameters:
         input_type: helm
         output_type: yaml
         input_paths:
-          - cloud-portal/helmcharts/cloud-portal/${cloud_portal:chart:name}/${cloud_portal:chart:version}/
+          - cloud-portal/helmcharts/cloud-portal/${cloud_portal:charts:cloud-portal:version}/
         helm_params:
           name: ${cloud_portal:release_name}
           namespace: ${cloud_portal:namespace}

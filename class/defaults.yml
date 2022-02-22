@@ -4,9 +4,9 @@ parameters:
     namespace: appuio-cloud-portal
 
     release_name: cloud-portal
-    chart:
-      source: https://charts.appuio.ch
-      name: cloud-portal
-      version: "0.3.0"
+    charts:
+      cloud-portal:
+        source: https://charts.appuio.ch
+        version: "0.3.0"
 
     helm_values: {}
