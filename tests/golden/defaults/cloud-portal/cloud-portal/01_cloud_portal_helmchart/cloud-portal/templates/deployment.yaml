@@ -5,8 +5,8 @@ metadata:
     app.kubernetes.io/instance: cloud-portal
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: cloud-portal
-    app.kubernetes.io/version: v0.1.0
-    helm.sh/chart: cloud-portal-0.3.0
+    app.kubernetes.io/version: v0.2.0
+    helm.sh/chart: cloud-portal-0.4.0
   name: cloud-portal
 spec:
   replicas: 1
@@ -17,13 +17,13 @@ spec:
   template:
     metadata:
       annotations:
-        configmap.kubernetes.io/checksum: ee5cce05345328818824641e17714278eb70778bd4749d3a293ab136a937126a
+        configmap.kubernetes.io/checksum: 9f048773476ab84d5ec15fd878198dc40d5699f64292de764eaf12de63ffd717
       labels:
         app.kubernetes.io/instance: cloud-portal
         app.kubernetes.io/name: cloud-portal
     spec:
       containers:
-        - image: ghcr.io/appuio/cloud-portal:v0.1.0
+        - image: ghcr.io/appuio/cloud-portal:v0.2.0
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
