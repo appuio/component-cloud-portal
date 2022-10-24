@@ -4,9 +4,15 @@ parameters:
     namespace: appuio-cloud-portal
 
     release_name: cloud-portal
+    images:
+      cloud-portal:
+        registry: ghcr.io
+        repository: appuio/cloud-portal
+        tag: v0.9.0
     charts:
       cloud-portal:
         source: https://charts.appuio.ch
         version: "0.4.1"
 
-    helm_values: {}
+    helm_values:
+      image: ${cloud_portal:images:cloud-portal}

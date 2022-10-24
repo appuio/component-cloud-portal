@@ -19,6 +19,15 @@ default:: `cloud-portal`
 
 The name under which the helm chart is deployed.
 
+== `images.cloud-portal`
+
+[horizontal]
+type:: dict
+default:: See https://github.com/appuio/component-cloud-portal/blob/master/class/defaults.yml[`class/defaults.yml`]
+
+The container image to use for the cloud portal deployment.
+The contents of this parameter are passed to the Helm chart in value `image`.
+
 
 == `charts.cloud-portal.source`
 
