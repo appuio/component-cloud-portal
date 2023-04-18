@@ -45,7 +45,7 @@ jobs:
           body-includes: '🛠️ _Auto release'
       - name: add or update PR comment for too many labels
         if: steps.bump.outputs.label-count > 1
-        uses: peter-evans/create-or-update-comment@v2
+        uses: peter-evans/create-or-update-comment@v3
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
@@ -90,7 +90,7 @@ jobs:
           comment-author: 'github-actions[bot]'
           body-includes: '🛠️ _Auto release '
       - name: add or update comment on PR
-        uses: peter-evans/create-or-update-comment@v2
+        uses: peter-evans/create-or-update-comment@v3
         if: github.event.action != 'closed'
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
@@ -111,7 +111,7 @@ jobs:
         run: |
           git push origin "${newVer}"
       - name: Update comment on merged PR
-        uses: peter-evans/create-or-update-comment@v2
+        uses: peter-evans/create-or-update-comment@v3
         if: github.event.action == 'closed' && github.event.pull_request.merged == true
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
