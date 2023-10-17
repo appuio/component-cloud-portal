@@ -8,7 +8,7 @@ parameters:
       cloud-portal:
         registry: ghcr.io
         repository: appuio/cloud-portal
-        tag: v0.14.0
+        tag: v0.14.1
     charts:
       cloud-portal:
         source: https://charts.appuio.ch
