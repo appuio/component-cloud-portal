@@ -7,16 +7,49 @@
   "ignorePaths": [
     ".github/**"
   ],
+  "labels": [
+    "dependency"
+  ],
+  "separateMinorPatch": true,
   "postUpgradeTasks": {
     "commands": [
       "make gen-golden-all"
     ],
-    "fileFilters": [ "tests/golden/**" ],
+    "fileFilters": [
+      "tests/golden/**"
+    ],
     "executionMode": "update"
   },
-  "suppressNotifications": [ "artifactErrors" ],
-  "labels": [
-    "dependency"
+  "suppressNotifications": [
+    "artifactErrors"
   ],
-  "separateMinorPatch": true
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "automerge": true,
+      "platformAutomerge": false,
+      "labels": [
+        "dependency",
+        "automerge",
+        "bump:patch"
+      ]
+    },
+    {
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "automerge": true,
+      "platformAutomerge": false,
+      "labels": [
+        "dependency",
+        "automerge",
+        "bump:minor"
+      ],
+      "matchPackagePatterns": [
+        ".*"
+      ]
+    }
+  ]
 }
