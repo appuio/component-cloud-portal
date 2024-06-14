@@ -11,6 +11,7 @@
     "dependency"
   ],
   "separateMinorPatch": true,
+  "separateMultipleMajor": true,
   "postUpgradeTasks": {
     "commands": [
       "make gen-golden-all"
@@ -49,6 +50,18 @@
       ],
       "matchPackagePatterns": [
         ".*"
+      ]
+    },
+    {
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "automerge": true,
+      "platformAutomerge": false,
+      "labels": [
+        "dependency",
+        "automerge",
+        "bump:major"
       ]
     }
   ]
