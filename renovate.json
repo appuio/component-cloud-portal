@@ -7,35 +7,62 @@
   "ignorePaths": [
     ".github/**"
   ],
-  "postUpgradeTasks": {
-    "commands": [
-      "make gen-golden-all"
-    ],
-    "fileFilters": [ "tests/golden/**" ],
-    "executionMode": "update"
-  },
-  "suppressNotifications": [ "artifactErrors" ],
   "labels": [
     "dependency"
   ],
   "separateMinorPatch": true,
   "separateMultipleMajor": true,
+  "postUpgradeTasks": {
+    "commands": [
+      "make gen-golden-all"
+    ],
+    "fileFilters": [
+      "tests/golden/**"
+    ],
+    "executionMode": "update"
+  },
+  "suppressNotifications": [
+    "artifactErrors"
+  ],
   "packageRules": [
     {
-      "matchUpdateTypes": ["major"],
-      "labels": ["dependency", "bump:major"]
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "automerge": true,
+      "platformAutomerge": false,
+      "labels": [
+        "dependency",
+        "automerge",
+        "bump:patch"
+      ]
     },
     {
-      "matchUpdateTypes": ["minor"],
-      "labels": ["dependency", "bump:minor"],
+      "matchUpdateTypes": [
+        "minor"
+      ],
       "automerge": true,
-      "platformAutomerge": true
+      "platformAutomerge": false,
+      "labels": [
+        "dependency",
+        "automerge",
+        "bump:minor"
+      ],
+      "matchPackagePatterns": [
+        ".*"
+      ]
     },
     {
-      "matchUpdateTypes": ["patch"],
-      "labels": ["dependency", "bump:patch"],
+      "matchUpdateTypes": [
+        "major"
+      ],
       "automerge": true,
-      "platformAutomerge": true
+      "platformAutomerge": false,
+      "labels": [
+        "dependency",
+        "automerge",
+        "bump:major"
+      ]
     }
   ]
 }
