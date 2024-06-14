@@ -18,24 +18,5 @@
   "labels": [
     "dependency"
   ],
-  "separateMinorPatch": true,
-  "separateMultipleMajor": true,
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["major"],
-      "labels": ["dependency", "bump:major"]
-    },
-    {
-      "matchUpdateTypes": ["minor"],
-      "labels": ["dependency", "bump:minor"],
-      "automerge": true,
-      "platformAutomerge": true
-    },
-    {
-      "matchUpdateTypes": ["patch"],
-      "labels": ["dependency", "bump:patch"],
-      "automerge": true,
-      "platformAutomerge": true
-    }
-  ]
+  "separateMinorPatch": true
 }
