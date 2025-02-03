@@ -23,7 +23,7 @@ spec:
         app.kubernetes.io/name: cloud-portal
     spec:
       containers:
-        - image: ghcr.io/appuio/cloud-portal:v0.14.2
+        - image: ghcr.io/appuio/cloud-portal:v0.14.4
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
